@@ -1,11 +1,13 @@
 import * as React from "react";
 import { useCallback, useRef, useState } from 'react';
 import { Dispatch } from 'redux';
-import { actions } from '../Redux/store';
 import { connect, ConnectedProps } from 'react-redux';
+import { addListItemAction } from '../Redux/actions';
+import { addFavouriteItemAction } from '../Redux/notTypedActions';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addListItem: (title: string) => dispatch(actions.addListItemAction(title)),
+  addListItem: (title: string) => dispatch(addListItemAction(title)),
+  addToFavourite: (id: string) => dispatch(addFavouriteItemAction(id)),
 });
 
 const connector = connect(

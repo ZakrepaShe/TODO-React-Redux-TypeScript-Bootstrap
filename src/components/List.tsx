@@ -2,15 +2,16 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import Item from './Item';
 import { Dispatch } from 'redux';
-import { initialState, todoListSelector, actions, ActionTypes } from '../Redux/store';
 import { connect, ConnectedProps } from 'react-redux';
+import { IStoreState, todoListSelector } from '../Redux/store';
+import { removeListItemAction } from '../Redux/actions';
 
-const mapStateToProps = (state: initialState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   list: todoListSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  removeListItem: (id: string) => dispatch(actions.removeListItemAction(id)),
+  removeListItem: (id: string) => dispatch(removeListItemAction(id)),
 });
 
 const connector = connect(
